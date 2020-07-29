@@ -1,0 +1,6 @@
+[submodule "visit-manager"]
+	path = visit-manager
+	url = git@github.com:ct-fiuba/visit-manager.git
+[submodule "ContactTracingWebApp"]
+	path = ContactTracingWebApp
+	url = git@github.com:ct-fiuba/ContactTracingWebApp.git
