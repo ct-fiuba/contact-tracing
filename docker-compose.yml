@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  # Front-end applications
+  web-app:
+    build:
+      context: ./web-app
+      dockerfile: Dockerfile.web
+    image: ct-web-app:latest
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    networks:
+      - access-network
+    stdin_open: true
+
+  # Ingress gateways
+  user-api:
+    build:
+      context: ./user-api
+      dockerfile: Dockerfile.web
+    image: ct-user-api:latest
+    environment:
+      - PORT=5000
+      - VISIT_MANAGER_URL=http://visit-manager:5005
+    ports:
+      - "5000:5000"
+    networks:
+      - access-network
+      - internal-network
+
+  # Back-end servers
+  visit-manager:
+    build:
+      context: ./visit-manager
+      dockerfile: Dockerfile.web
+    image: ct-visit-manager:latest
+    command: "sleep 5 && npm start"
+    environment:
+      - PORT=5005
+      - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+    ports:
+      - "5005:5005"
+    depends_on:
+      - contact-tracing-db
+    networks:
+      - internal-network
+
+  # DBs
+  contact-tracing-db:
+    image: mongo:3.6.4
+    volumes:
+      - './data:/data/db'
+    networks:
+      - internal-network
+
+networks:
+  internal-network:
+  access-network:

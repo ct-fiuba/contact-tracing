@@ -5,5 +5,5 @@
 	path = user-api
 	url = git@github.com:ct-fiuba/ct-user-api.git
 [submodule "web-app"]
-	path = web-api
+	path = web-app
 	url = git@github.com:ct-fiuba/ct-web-app.git
