@@ -25,3 +25,15 @@ Consideraciones:
 Para añadir un nuevo módulo, ejecutar el comando:
 
     git submodule add [-b <branch] <url> <name>
+
+
+## Corrida
+
+### Levantar los servicios
+Para correr todos los servicios, buildear todas las imagenes y ejecutar luego:
+
+	./run.sh
+
+Si se quiere buildear imagenes con lo ultimo en cada subdirectorio, ejecutar con el flag de `-b`:
+
+	./run.sh -b
