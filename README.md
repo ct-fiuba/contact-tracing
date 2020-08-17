@@ -26,6 +26,9 @@ Para añadir un nuevo módulo, ejecutar el comando:
 
     git submodule add [-b <branch] <url> <name>
 
+### Modificacion de servicios
+Si se desea realizar algun cambio en el sistema (ej: agregar algun servicio), o modificar alguno de los servicios (ej: cambiar alguna variable de entorno), modificar el archivo `docker-compose.yml`. Para mas información, leer la documentación de Docker Compose.
+
 
 ## Corrida
 
