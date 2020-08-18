@@ -1,6 +1,9 @@
 [submodule "visit-manager"]
 	path = visit-manager
 	url = git@github.com:ct-fiuba/visit-manager.git
-[submodule "ContactTracingWebApp"]
-	path = ContactTracingWebApp
-	url = git@github.com:ct-fiuba/ContactTracingWebApp.git
+[submodule "user-api"]
+	path = user-api
+	url = git@github.com:ct-fiuba/ct-user-api.git
+[submodule "web-app"]
+	path = web-app
+	url = git@github.com:ct-fiuba/ct-web-app.git
