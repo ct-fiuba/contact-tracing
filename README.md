@@ -29,6 +29,14 @@ Para añadir un nuevo módulo, ejecutar el comando:
 ### Modificacion de servicios
 Si se desea realizar algun cambio en el sistema (ej: agregar algun servicio), o modificar alguno de los servicios (ej: cambiar alguna variable de entorno), modificar el archivo `docker-compose.yml`. Para mas información, leer la documentación de Docker Compose.
 
+### Actualizacion de submodulos
+En caso de querer ejecutar comandos de `git` para todos los submodulos (por ejemplo, stashear lo desarrollado y pullear), utilizar ciertas funciones utiles en `tools.sh`. Un ejemplo de ejecución:
+
+	./tools.sh checkout_all
+	./tools.sh pull_all
+
+En caso de identificar otros comandos útiles, sumarlos al script.
+
 
 ## Corrida
 
