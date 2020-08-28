@@ -1,20 +1,6 @@
 version: "3"
 
 services:
-  # Front-end applications
-  web-app:
-    build:
-      context: ./web-app
-      dockerfile: Dockerfile.web
-    image: ct-web-app:latest
-    environment:
-      - PORT=3000
-    ports:
-      - "3000:3000"
-    networks:
-      - access-network
-    stdin_open: true
-
   # Ingress gateways
   user-api:
     build:
