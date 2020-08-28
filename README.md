@@ -48,3 +48,10 @@ Para correr todos los servicios, buildear todas las imagenes y ejecutar luego:
 Si se quiere buildear imagenes con lo ultimo en cada subdirectorio, ejecutar con el flag de `-b`:
 
 	./run.sh -b
+
+
+## Makefile utils
+
+* `update-repos`: Checkoutea master en todos los submodulos y hace un pull
+* `run`: levanta el sistema (backend)
+* `test-whole`: levanta el sistema para testear con Docker, corre los `e2e-test` y lo baja.

@@ -9,7 +9,6 @@ run:
 
 .PHONY: test-whole
 test-whole: run
-
 	cd e2e-test-suite && npm i 
 	cd e2e-test-suite && npm test || echo "ERROR!!!"
 	docker-compose down
