@@ -11,3 +11,7 @@
 	path = e2e-test-suite
 	url = git@github.com:ct-fiuba/e2e-test-suite.git
 	branch = master
+[submodule "auth-server"]
+	path = auth-server
+	url = git@github.com:ct-fiuba/ct-auth-server.git
+	branch = master
