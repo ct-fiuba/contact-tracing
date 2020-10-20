@@ -1,6 +1,25 @@
 version: "3"
 
 services:
+  # Auth server
+  auth-server:
+    build:
+      context: ./auth-server
+      dockerfile: Dockerfile.web
+    image: ct-auth-server:latest
+    env_file:
+      - ./auth-server/.env
+    environment:
+      - PORT=5006
+      - MONGODB_URI=mongodb://auth-db:27017/auth-db
+    ports:
+      - "5006:5006"
+    depends_on:
+      - auth-db
+    networks:
+      - access-network
+      - auth-network
+  
   # Ingress gateways
   user-api:
     build:
@@ -10,6 +29,7 @@ services:
     environment:
       - PORT=5000
       - VISIT_MANAGER_URL=http://visit-manager:5005
+      - AUTH_SERVER_URL=http://auth-server:5006
     ports:
       - "5000:5000"
     networks:
@@ -40,7 +60,14 @@ services:
       - './data:/data/db'
     networks:
       - internal-network
+  auth-db:
+    image: mongo:3.6.4
+    volumes:
+      - './data-auth:/data/db'
+    networks:
+      - auth-network
 
 networks:
   internal-network:
   access-network:
+  auth-network:
