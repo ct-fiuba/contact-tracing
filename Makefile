@@ -7,9 +7,17 @@ update-repos:
 run:
 	./run.sh -b
 
+.PHONY: run-fresh
+run-fresh:
+	./run-fresh.sh -b
+
+.PHONY: stop-fresh
+stop-fresh:
+	docker-compose -f docker-compose.fresh.yml down
+
 .PHONY: test-whole
 test-whole: run
-	cd e2e-test-suite && npm i 
+	cd e2e-test-suite && npm i
 	cd e2e-test-suite && npm test || echo "ERROR!!!"
 	docker-compose down
 
