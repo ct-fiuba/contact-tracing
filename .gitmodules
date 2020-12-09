@@ -15,3 +15,7 @@
 	path = auth-server
 	url = git@github.com:ct-fiuba/ct-auth-server.git
 	branch = master
+[submodule "environment-builder"]
+	path = environment-builder
+	url = https://github.com/ct-fiuba/ct-environment-builder
+	branch = master
