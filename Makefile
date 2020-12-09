@@ -10,6 +10,7 @@ run:
 .PHONY: run-fresh
 run-fresh:
 	./run-fresh.sh -b
+	cd environment-builder && make run users=$(users) establishments=$(establishments)
 
 .PHONY: stop-fresh
 stop-fresh:
