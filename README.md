@@ -15,11 +15,11 @@ Una vez clonado, si hubo cambios en el repositorio y en los submodulos, actualiz
 	git submodule update --init --recursive
 
 
-Consideraciones: 
+Consideraciones:
 
 - Los submodulos estarán apuntando a algún commit en particular, recordar hacer `checkout` y `pull` de lo último a la hora de trabajar sobre ellos.
 - El clone se hará mediante `ssh`, por lo que deberá configurarla, de no tenerla.
-- Para versiones anteriores de Git, es posible que al clonar deba hacerse además: `git submodule update --init --recursive` 
+- Para versiones anteriores de Git, es posible que al clonar deba hacerse además: `git submodule update --init --recursive`
 
 ### Adición de módulos
 Para añadir un nuevo módulo, ejecutar el comando:
@@ -55,3 +55,5 @@ Si se quiere buildear imagenes con lo ultimo en cada subdirectorio, ejecutar con
 * `update-repos`: Checkoutea master en todos los submodulos y hace un pull
 * `run`: levanta el sistema (backend)
 * `test-whole`: levanta el sistema para testear con Docker, corre los `e2e-test` y lo baja.
+* `run-fresh [users=100 establishments=10]`: levanata un nuevo sistema sin datos previos, y en el caso de pasar los argumentos users y establishments, agrega esa cantidad de datos al sistema.
+* `stop-fresh`: baja el sistema levantado con el comando `run-fresh`, perdiendo todos los datos que el mismo almacena.
