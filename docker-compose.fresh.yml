@@ -33,6 +33,22 @@ services:
     networks:
       - internal-network
 
+  virus-tracker:
+    build:
+      context: ./virus-tracker
+      dockerfile: Dockerfile.web
+    image: ct-virus-tracker:latest
+    command: "sleep 5 && npm start"
+    environment:
+      - PORT=5007
+      - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+    ports:
+      - "5007:5007"
+    depends_on:
+      - contact-tracing-db
+    networks:
+      - internal-network
+
   # DBs
   contact-tracing-db-fresh:
     image: mongo:3.6.4
