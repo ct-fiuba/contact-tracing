@@ -10,6 +10,7 @@ services:
     environment:
       - PORT=5000
       - VISIT_MANAGER_URL=http://visit-manager:5005
+      - VIRUS_TRACKER_URL=http://virus-tracker:5007
     ports:
       - "5000:5000"
     networks:
