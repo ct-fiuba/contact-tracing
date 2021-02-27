@@ -5,7 +5,7 @@ update-repos:
 
 .PHONY: run
 run:
-	./run.sh -b
+	bash ./run.sh -b
 
 .PHONY: run-fresh
 run-fresh:
