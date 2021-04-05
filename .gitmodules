@@ -18,7 +18,7 @@
 [submodule "virus-tracker"]
 	path = virus-tracker
 	url = git@github.com:ct-fiuba/ct-virus-tracker.git
-	branch = main
+	branch = master
 [submodule "environment-builder"]
 	path = environment-builder
 	url = https://github.com/ct-fiuba/ct-environment-builder.git

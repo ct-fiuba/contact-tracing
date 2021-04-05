@@ -42,11 +42,11 @@ services:
     command: "sleep 5 && npm start"
     environment:
       - PORT=5007
-      - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+      - MONGODB_URI=mongodb://contact-tracing-db-fresh:27017/contact-tracing-db-fresh
     ports:
       - "5007:5007"
     depends_on:
-      - contact-tracing-db
+      - contact-tracing-db-fresh
     networks:
       - internal-network
 
