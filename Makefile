@@ -9,8 +9,8 @@ run:
 
 .PHONY: run-fresh
 run-fresh:
-	./run-fresh.sh -b
-	cd environment-builder && make run users=$(users) establishments=$(establishments)
+	bash ./run-fresh.sh -b
+	cd environment-builder && make run users=$(users) establishments=$(establishments) mobility=$(mobility) days=$(days) n95Mandatory=$(n95Mandatory);
 
 .PHONY: stop-fresh
 stop-fresh:
