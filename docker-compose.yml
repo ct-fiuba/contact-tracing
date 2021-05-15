@@ -59,16 +59,19 @@ services:
       context: ./virus-tracker
       dockerfile: Dockerfile.web
     image: ct-virus-tracker:latest
-    command: "sleep 5 && npm start"
+    command: "sleep 10 && npm start"
     environment:
       - PORT=5007
       - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+      - CODES_QUEUE=amqp://rabbitmq
     ports:
       - "5007:5007"
     depends_on:
       - contact-tracing-db
+      - rabbitmq
     networks:
       - internal-network
+      - queue-network
 
   # DBs
   contact-tracing-db:
@@ -84,7 +87,18 @@ services:
     networks:
       - auth-network
 
+  # queues
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - queue-network
+
 networks:
   internal-network:
   access-network:
   auth-network:
+  queue-network:
+    driver: bridge
