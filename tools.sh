@@ -1,6 +1,6 @@
 checkout_all ()
 {
-    (git submodule foreach 'git checkout master')
+    (git submodule foreach 'git checkout master || git checkout main')
 }
 
 pull_all ()
