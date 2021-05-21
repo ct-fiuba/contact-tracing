@@ -22,3 +22,7 @@
 [submodule "environment-builder"]
 	path = environment-builder
 	url = https://github.com/ct-fiuba/ct-environment-builder.git
+[submodule "contagion-updater"]
+	path = contagion-updater
+	url = git@github.com:ct-fiuba/ct-contagion-updater.git
+	branch = main
