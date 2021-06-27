@@ -80,6 +80,7 @@ services:
     image: ct-contagion-updater:latest
     environment:
       - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+      - MONGODB_DB_NAME=contact-tracing-db
       - QUEUE_ADDRESS=amqp://codes-queue/
       - QUEUE_NAME=infected-codes
     restart: on-failure
