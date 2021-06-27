@@ -62,7 +62,7 @@ services:
     environment:
       - PORT=5007
       - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
-      - QUEUE_ADDRESS=amqp://guest:guest@codes-queue:5672/
+      - QUEUE_ADDRESS=amqp://codes-queue:5672/
       - QUEUE_NAME=infected-codes
     ports:
       - "5007:5007"
@@ -80,9 +80,11 @@ services:
     image: ct-contagion-updater:latest
     environment:
       - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
-      - QUEUE_ADDRESS=amqp://guest2:guest@codes-queue:5672/
+      - QUEUE_ADDRESS=amqp://codes-queue/
       - QUEUE_NAME=infected-codes
+    restart: on-failure
     depends_on:
+      - contact-tracing-db
       - codes-queue
     networks:
       - internal-network
@@ -111,7 +113,7 @@ services:
     volumes:
       - './data-auth:/data/db'
     networks:
-      - internal-network
+      - access-network
 
 networks:
   internal-network:
