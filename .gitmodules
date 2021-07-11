@@ -26,3 +26,7 @@
 	path = contagion-updater
 	url = git@github.com:ct-fiuba/ct-contagion-updater.git
 	branch = main
+[submodule "codes-whisperer"]
+	path = codes-whisperer
+	url = git@github.com:ct-fiuba/ct-codes-whisperer.git
+	branch = main
