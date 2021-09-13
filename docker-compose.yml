@@ -102,6 +102,22 @@ services:
     networks:
         - codes-queue-network
 
+  codes-whisperer:
+    build:
+      context: ./codes-whisperer
+      dockerfile: Dockerfile.web
+    image: ct-codes-whisperer:latest
+    command: "sleep 5 && npm start"
+    environment:
+      - PORT=5008
+      - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
+    ports:
+      - "5008:5008"
+    depends_on:
+      - contact-tracing-db
+    networks:
+      - internal-network
+
   # DBs
   contact-tracing-db:
     image: mongo:3.6.4
