@@ -54,6 +54,6 @@ Si se quiere buildear imagenes con lo ultimo en cada subdirectorio, ejecutar con
 
 * `update-repos`: Checkoutea master en todos los submodulos y hace un pull
 * `run`: levanta el sistema (backend)
-* `test-whole`: levanta el sistema para testear con Docker, corre los `e2e-test` y lo baja.
+* `test-whole [features=feature/visits.feature]`: levanta el sistema para testear con Docker, corre los `e2e-test` y lo baja. Se puede especificar que feature correr para agilizar el testeo.
 * `run-fresh [users=100 establishments=10]`: levanata un nuevo sistema sin datos previos, y en el caso de pasar los argumentos users y establishments, agrega esa cantidad de datos al sistema.
 * `stop-fresh`: baja el sistema levantado con el comando `run-fresh`, perdiendo todos los datos que el mismo almacena.
