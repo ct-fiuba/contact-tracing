@@ -43,12 +43,40 @@ services:
     environment:
       - PORT=5007
       - MONGODB_URI=mongodb://contact-tracing-db-fresh:27017/contact-tracing-db-fresh
+      - MONGODB_DB_NAME=contact-tracing-db-fresh
+      - QUEUE_ADDRESS=amqp://guest:guest@codes-queue-fresh:5672/
+      - QUEUE_NAME=infected-codes
     ports:
       - "5007:5007"
     depends_on:
       - contact-tracing-db-fresh
+      - codes-queue-fresh
     networks:
       - internal-network
+      - codes-queue-network
+
+  contagion-updater:
+    build:
+      context: ./contagion-updater
+      dockerfile: Dockerfile
+    image: ct-contagion-updater:latest
+    environment:
+      - MONGODB_URI=mongodb://contact-tracing-db-fresh:27017/contact-tracing-db-fresh
+      - QUEUE_ADDRESS=amqp://codes-queue/
+      - QUEUE_NAME=infected-codes
+    depends_on:
+      - codes-queue-fresh
+    networks:
+      - internal-network
+      - codes-queue-network
+
+  # RabbitMQ instance
+  codes-queue-fresh:
+    image: rabbitmq:3-management-alpine
+    ports:
+        - 15672:15672
+    networks:
+        - codes-queue-network
 
   codes-whisperer:
     build:
@@ -75,3 +103,4 @@ services:
 networks:
   internal-network:
   access-network:
+  codes-queue-network:
