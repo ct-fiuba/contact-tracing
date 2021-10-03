@@ -19,7 +19,7 @@ stop-fresh:
 .PHONY: test-whole
 test-whole: run
 	cd e2e-test-suite && npm i
-	cd e2e-test-suite && npm test || echo "ERROR!!!"
+	cd e2e-test-suite && npm test -- $(features) || echo "ERROR!!!"
 	docker-compose down
 
 .PHONY: help
