@@ -18,7 +18,7 @@ services:
       - auth-db
     networks:
       - access-network
-  
+
   # Ingress gateways
   user-api:
     build:
@@ -30,6 +30,7 @@ services:
       - VISIT_MANAGER_URL=http://visit-manager:5005
       - AUTH_SERVER_URL=http://auth-server:5006
       - VIRUS_TRACKER_URL=http://virus-tracker:5007
+      - CODES_WHISPERER_URL=http://codes-whisperer:5008
     ports:
       - "5000:5000"
     networks:
@@ -83,6 +84,7 @@ services:
       - MONGODB_DB_NAME=contact-tracing-db
       - QUEUE_ADDRESS=amqp://codes-queue/
       - QUEUE_NAME=infected-codes
+      - TRIGGER_SCHEDULE_PERIOD="@every 1s"
     restart: on-failure
     depends_on:
       - contact-tracing-db
