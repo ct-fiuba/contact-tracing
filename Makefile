@@ -17,10 +17,11 @@ stop-fresh:
 	docker-compose -f docker-compose.fresh.yml down
 
 .PHONY: test-whole
-test-whole: run
+test-whole:
+	./run-fresh.sh -b
 	cd e2e-test-suite && npm i
 	cd e2e-test-suite && npm test -- $(features) || echo "ERROR!!!"
-	docker-compose down
+	docker-compose -f docker-compose.fresh.yml down
 
 .PHONY: help
 help:

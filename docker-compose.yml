@@ -84,7 +84,7 @@ services:
       - MONGODB_DB_NAME=contact-tracing-db
       - QUEUE_ADDRESS=amqp://codes-queue/
       - QUEUE_NAME=infected-codes
-      - TRIGGER_SCHEDULE_PERIOD="@every 1s"
+      - TRIGGER_SCHEDULE_PERIOD=@every 1s
     restart: on-failure
     depends_on:
       - contact-tracing-db
@@ -98,9 +98,6 @@ services:
     image: rabbitmq:3-management-alpine
     ports:
         - 15672:15672
-    volumes:
-        - ./rabbitmq/data/:/var/lib/rabbitmq/
-        - ./rabbitmq/log/:/var/log/rabbitmq
     networks:
         - codes-queue-network
 
