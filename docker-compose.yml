@@ -77,7 +77,7 @@ services:
   contagion-updater:
     build:
       context: ./contagion-updater
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.worker
     image: ct-contagion-updater:latest
     environment:
       - MONGODB_URI=mongodb://contact-tracing-db:27017/contact-tracing-db
